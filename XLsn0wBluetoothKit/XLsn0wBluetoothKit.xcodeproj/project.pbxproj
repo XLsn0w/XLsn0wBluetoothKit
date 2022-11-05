@@ -23,6 +23,8 @@
 		FDB056D42916472D00388227 /* CBCharacteristic+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB056C92916472C00388227 /* CBCharacteristic+Additions.m */; };
 		FDB056D52916472D00388227 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB056CF2916472C00388227 /* NSString+Extensions.m */; };
 		FDB056D62916472D00388227 /* CBPeripheral+RSSI.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB056D02916472C00388227 /* CBPeripheral+RSSI.m */; };
+		FDB056DD29164C3E00388227 /* BLEState.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB056DB29164C3E00388227 /* BLEState.m */; };
+		FDB056DE29164C3E00388227 /* ConnectBLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB056DC29164C3E00388227 /* ConnectBLEManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,10 @@
 		FDB056CE2916472C00388227 /* CBCharacteristic+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBCharacteristic+Additions.h"; sourceTree = "<group>"; };
 		FDB056CF2916472C00388227 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		FDB056D02916472C00388227 /* CBPeripheral+RSSI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheral+RSSI.m"; sourceTree = "<group>"; };
+		FDB056D829164C3E00388227 /* ConnectBLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectBLEManager.h; sourceTree = "<group>"; };
+		FDB056DA29164C3E00388227 /* BLEState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEState.h; sourceTree = "<group>"; };
+		FDB056DB29164C3E00388227 /* BLEState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEState.m; sourceTree = "<group>"; };
+		FDB056DC29164C3E00388227 /* ConnectBLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectBLEManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 				FDB056932916472200388227 /* ViewController.h */,
 				FDB056942916472200388227 /* ViewController.m */,
 				FDB056962916472200388227 /* Main.storyboard */,
+				FDB056D729164C3E00388227 /* ConnectBLEManager */,
 				FDB056C22916472C00388227 /* XLsn0wBluetoothKit */,
 				FDB056992916472300388227 /* Assets.xcassets */,
 				FDB0569B2916472300388227 /* LaunchScreen.storyboard */,
@@ -188,6 +195,25 @@
 				FDB056D02916472C00388227 /* CBPeripheral+RSSI.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		FDB056D729164C3E00388227 /* ConnectBLEManager */ = {
+			isa = PBXGroup;
+			children = (
+				FDB056D829164C3E00388227 /* ConnectBLEManager.h */,
+				FDB056DC29164C3E00388227 /* ConnectBLEManager.m */,
+				FDB056D929164C3E00388227 /* BLEState */,
+			);
+			path = ConnectBLEManager;
+			sourceTree = "<group>";
+		};
+		FDB056D929164C3E00388227 /* BLEState */ = {
+			isa = PBXGroup;
+			children = (
+				FDB056DA29164C3E00388227 /* BLEState.h */,
+				FDB056DB29164C3E00388227 /* BLEState.m */,
+			);
+			path = BLEState;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,8 +353,10 @@
 				FDB056D52916472D00388227 /* NSString+Extensions.m in Sources */,
 				FDB056D22916472D00388227 /* CBService+Additions.m in Sources */,
 				FDB0568F2916472200388227 /* AppDelegate.m in Sources */,
+				FDB056DD29164C3E00388227 /* BLEState.m in Sources */,
 				FDB056A02916472300388227 /* main.m in Sources */,
 				FDB056922916472200388227 /* SceneDelegate.m in Sources */,
+				FDB056DE29164C3E00388227 /* ConnectBLEManager.m in Sources */,
 				FDB056D42916472D00388227 /* CBCharacteristic+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

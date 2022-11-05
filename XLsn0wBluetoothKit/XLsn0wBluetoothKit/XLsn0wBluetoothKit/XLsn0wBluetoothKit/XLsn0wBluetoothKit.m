@@ -9,6 +9,7 @@
  *                                                                                           *
 *********XLsn0w*******************************************************************************/
 #import "XLsn0wBluetoothKit.h"
+#import "CBPeripheral+RSSI.h"
 
 @implementation XLsn0wBluetoothKit
 
@@ -157,7 +158,7 @@ static XLsn0wBluetoothKit* sharedInstance = nil;
  */
 -(void)setNotification:(BOOL)enable forCharacteristic:(CBCharacteristic *)characteristic{
     if (_connectedPeripheral == nil) {
-        XLsn0wLog(@"_connectedPeripheral === %@", _connectedPeripheral);
+//        XLsn0wLog(@"_connectedPeripheral === %@", _connectedPeripheral);
         return;
     }
     [_connectedPeripheral setNotifyValue:enable forCharacteristic:characteristic];
