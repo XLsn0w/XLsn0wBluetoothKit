@@ -135,7 +135,6 @@
 				FDB056932916472200388227 /* ViewController.h */,
 				FDB056942916472200388227 /* ViewController.m */,
 				FDB056962916472200388227 /* Main.storyboard */,
-				FDB056D729164C3E00388227 /* ConnectBLEManager */,
 				FDB056C22916472C00388227 /* XLsn0wBluetoothKit */,
 				FDB056992916472300388227 /* Assets.xcassets */,
 				FDB0569B2916472300388227 /* LaunchScreen.storyboard */,
@@ -165,7 +164,9 @@
 		FDB056C22916472C00388227 /* XLsn0wBluetoothKit */ = {
 			isa = PBXGroup;
 			children = (
+				FDB056D729164C3E00388227 /* ConnectBLEManager */,
 				FDB056C32916472C00388227 /* XLsn0wBluetoothKit */,
+				FDB056D929164C3E00388227 /* BLEState */,
 				FDB056C62916472C00388227 /* Categories */,
 			);
 			path = XLsn0wBluetoothKit;
@@ -202,7 +203,6 @@
 			children = (
 				FDB056D829164C3E00388227 /* ConnectBLEManager.h */,
 				FDB056DC29164C3E00388227 /* ConnectBLEManager.m */,
-				FDB056D929164C3E00388227 /* BLEState */,
 			);
 			path = ConnectBLEManager;
 			sourceTree = "<group>";

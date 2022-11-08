@@ -6,6 +6,7 @@
 //
 
 #import "BLEState.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface BLEState () <CBCentralManagerDelegate>
 
@@ -46,8 +47,8 @@ static dispatch_once_t oncToken;
     switch ([central state]) {
         case CBManagerStatePoweredOff:
             NSLog(@"蓝牙状态 --> BLEState 蓝牙关闭状态");
-            [self showCenterMsg:@"请打开蓝牙来连接气囊床垫" duration:0.5];
-            PostNotification(@"BLEDisConnected", nil);
+            //[self showCenterMsg:@"请打开蓝牙来连接气囊床垫" duration:0.5];
+            //PostNotification(@"BLEDisConnected", nil);
             break;
         case CBManagerStatePoweredOn:
             NSLog(@"蓝牙状态 --> BLEState 蓝牙开启状态");
@@ -60,7 +61,7 @@ static dispatch_once_t oncToken;
             
         case CBManagerStateUnauthorized:
             NSLog(@"蓝牙状态 --> BLEState : Unauthorized");
-            [self showCenterMsg:@"请打开蓝牙授权"];
+            //[self showCenterMsg:@"请打开蓝牙授权"];
 
             break;
         case CBManagerStateUnknown:

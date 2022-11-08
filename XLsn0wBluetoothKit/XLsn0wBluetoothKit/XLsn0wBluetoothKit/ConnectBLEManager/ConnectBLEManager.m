@@ -7,6 +7,7 @@
 
 #import "ConnectBLEManager.h"
 #import "XLsn0wBluetoothKit.h"
+#import "CBPeripheral+RSSI.h"
 
 @interface ConnectBLEManager () <XLsn0wBluetoothDelegate>
 
@@ -39,7 +40,7 @@ static dispatch_once_t oncToken;
 
 - (void)initConfig {
     self.nearbyPeripherals = [NSMutableArray array];
-    kBLEManager.delegate = self;
+    kBluetoothKit.delegate = self;
 }
 
 #pragma mark - BluetoothDelegate
@@ -110,16 +111,16 @@ static dispatch_once_t oncToken;
 
 // 蓝牙连接成功
 - (void)didConnectedPeripheral:(CBPeripheral *)connectedPeripheral {
-    [[DLProgressHUD shareManager] dismissWithTime:0];
+    //[[DLProgressHUD shareManager] dismissWithTime:0];
     if (self.type == 1) {
-        [self showCenterMsg:@"连接成功" duration:0.5];
+        //[self showCenterMsg:@"连接成功" duration:0.5];
     }
-    if (kConnected) {
+//    if (kConnected) {
         if (self.isConnectedPeripheralBlock) {
             self.isConnectedPeripheralBlock(YES);
         }
-        [kBLEManager discoverCharacteristics];
-    }
+        [kBluetoothKit discoverCharacteristics];
+//    }
 }
 
 /** 发现蓝牙服务
@@ -128,31 +129,31 @@ static dispatch_once_t oncToken;
  - parameter services: The service instances which discovered by CoreBluetooth
  */
 - (void)didDiscoverServices:(CBPeripheral *)peripheral {
-    if (kConnected) {
-        if (self.isConnectedPeripheralBlock) {
-            self.isConnectedPeripheralBlock(YES);
-        }
-        [kBLEManager discoverCharacteristics];
-    }
+//    if (kConnected) {
+//        if (self.isConnectedPeripheralBlock) {
+//            self.isConnectedPeripheralBlock(YES);
+//        }
+//        [kBluetoothKit discoverCharacteristics];
+//    }
 }
 
 // 连接后断开
 - (void)didDisconnectPeripheral:(CBPeripheral *)peripheral {
-    [[DLProgressHUD shareManager] dismissWithTime:0];
+    //[[DLProgressHUD shareManager] dismissWithTime:0];
     if (self.isConnectedPeripheralBlock) {
         self.isConnectedPeripheralBlock(NO);
     }
-    if (kUser.deviceId.length > 0) {
-        [self showCenterMsg:@"蓝牙连接已断开"];
-        PostNotification(@"BLEDisConnected", nil);
-        PostNotification(@"BLEReConnected", nil);
-    }
+//    if (kUser.deviceId.length > 0) {
+//        [self showCenterMsg:@"蓝牙连接已断开"];
+//        PostNotification(@"BLEDisConnected", nil);
+//        PostNotification(@"BLEReConnected", nil);
+//    }
 }
 
 // 发现特征 service.UUID Characteristic.UUID
 - (void)didDiscoverCharacteritics:(CBService *)service {
-    NSArray* services = kBLEManager.connectedPeripheral.services;
-    XLsn0wLog(@"services === %@", services);
+    NSArray* services = kBluetoothKit.connectedPeripheral.services;
+//    XLsn0wLog(@"services === %@", services);
     
     for (CBService* service in services) {
         NSString *service_UUID = [NSString stringWithFormat:@"%@", service.UUID];
@@ -186,8 +187,8 @@ static dispatch_once_t oncToken;
     NSString *currentCharacteristic_UUID = [NSString stringWithFormat:@"%@", currentCharacteristic.UUID];
     if ([currentCharacteristic_UUID isEqualToString:UUID_Notify_always]) {
 //        kBLEManager.readCharacteristic = currentCharacteristic;
-        [kBLEManager readValueForCharacteristic:currentCharacteristic];
-        [kBLEManager setNotification:YES forCharacteristic:currentCharacteristic];
+        [kBluetoothKit readValueForCharacteristic:currentCharacteristic];
+        [kBluetoothKit setNotification:YES forCharacteristic:currentCharacteristic];
         NSLog(@"读数据的特征值 readCharacteristic = %@", currentCharacteristic);
     }
 }
@@ -196,8 +197,8 @@ static dispatch_once_t oncToken;
     // 写数据的特征值
     NSString *currentCharacteristic_UUID = [NSString stringWithFormat:@"%@", currentCharacteristic.UUID];
     if ([currentCharacteristic_UUID isEqualToString:UUID_Write]) {
-        kBLEManager.writeCharacteristic = currentCharacteristic;
-        [kBLEManager setNotification:YES forCharacteristic:currentCharacteristic];
+        kBluetoothKit.writeCharacteristic = currentCharacteristic;
+        [kBluetoothKit setNotification:YES forCharacteristic:currentCharacteristic];
         NSLog(@"写数据的特征值 writeCharacteristic = %@", currentCharacteristic);
     }
 }
@@ -206,16 +207,16 @@ static dispatch_once_t oncToken;
     // 读数据的特征值
     NSString *currentCharacteristic_UUID = [NSString stringWithFormat:@"%@", currentCharacteristic.UUID];
     if ([currentCharacteristic_UUID isEqualToString:UUID_Notify]) {
-        kBLEManager.readCharacteristic = currentCharacteristic;
-        [kBLEManager readValueForCharacteristic:currentCharacteristic];
-        [kBLEManager setNotification:YES forCharacteristic:currentCharacteristic];
+        kBluetoothKit.readCharacteristic = currentCharacteristic;
+        [kBluetoothKit readValueForCharacteristic:currentCharacteristic];
+        [kBluetoothKit setNotification:YES forCharacteristic:currentCharacteristic];
         NSLog(@"读数据的特征值 readCharacteristic = %@", currentCharacteristic);
     }
 }
 
 // 读取蓝牙设备返回的数据NSData *value = characteristic.value;
 - (void)didReadValueForCharacteristic:(CBCharacteristic *)characteristic {
-    PostNotification(@"didReadValueForCharacteristic", characteristic.value);
+//    PostNotification(@"didReadValueForCharacteristic", characteristic.value);
 }
 
 @end
